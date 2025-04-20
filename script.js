@@ -1,29 +1,23 @@
-// Dead code - unused function
 function unusedFunction() {
     console.log("This function is never called");
     return "Dead code";
 }
 
-// Dead code - unused variables
 const unusedVariable1 = "I'm never used";
 const unusedVariable2 = 42;
 
-// Main functionality
 document.addEventListener('DOMContentLoaded', () => {
     const analyzeButton = document.getElementById('analyzeButton');
     const ghostElement = document.getElementById('ghostElement');
     const resultsContainer = document.getElementById('results');
 
-    // Dead code - unused event listener
     document.addEventListener('click', (e) => {
         console.log("This click handler is never used");
     });
 
     analyzeButton.addEventListener('click', () => {
-        // Show ghost animation
         ghostElement.style.opacity = '1';
         
-        // Simulate code analysis
         setTimeout(() => {
             ghostElement.style.opacity = '0';
             displayResults();
@@ -49,12 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    // Dead code - unused helper function
     function unusedHelper() {
         return "I'm never used either";
     }
 
-    // Add hover effect to feature cards
     const featureCards = document.querySelectorAll('.feature-card');
     featureCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
@@ -65,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add click effect to buttons
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
         button.addEventListener('click', () => {
@@ -76,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add smooth scrolling for navigation links
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -90,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add Halloween-themed cursor effect
     document.addEventListener('mousemove', (e) => {
         const cursor = document.createElement('div');
         cursor.className = 'halloween-cursor';
@@ -102,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     });
 
-    // Add Boo! button functionality
     const booButton = document.getElementById('booButton');
+
     if (booButton) {
         booButton.addEventListener('click', () => {
-            // Create floating Boo! text
+
             const booText = document.createElement('div');
             booText.textContent = 'Boo!';
             booText.style.position = 'fixed';
@@ -117,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
             booText.style.pointerEvents = 'none';
             booText.style.animation = 'floatUp 2s ease-out forwards';
             
-            // Random position near the button
             const buttonRect = booButton.getBoundingClientRect();
             const x = buttonRect.left + (buttonRect.width / 2);
             const y = buttonRect.top;
@@ -127,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             document.body.appendChild(booText);
             
-            // Remove after animation
             setTimeout(() => {
                 booText.remove();
             }, 2000);
@@ -135,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Add floatUp animation
 const style = document.createElement('style');
 style.textContent = `
     @keyframes floatUp {
@@ -149,4 +135,5 @@ style.textContent = `
         }
     }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+  

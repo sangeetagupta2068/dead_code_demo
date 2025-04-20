@@ -3,99 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eerie Echoes - A Halloween Blog</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifier&display=swap" rel="stylesheet">
+    <title>Dead Code Hunt</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <img src="assets/images/logo.png" alt="Eerie Echoes Logo">
-                <h1>Eerie Echoes</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Stories</a></li>
-                    <li><a href="#">Crafts</a></li>
-                    <li><a href="#">Recipes</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#" class="cta">Spooky Fun!</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+            <div class="logo">🎃 Spooky Times</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Featured</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2>Embrace the Spooky Season</h2>
-                <p>Dive into tales of the supernatural, creative Halloween crafts, and delicious eerie treats.</p>
-                <a href="#" class="button primary">Explore Now</a>
-            </div>
-            <div class="hero-image">
-                <img src="assets/images/halloween_banner.png" alt="Halloween Banner">
-            </div>
-        </div>
-    </section>
+    <main>
+        <section id="hero">
+            <h1>Welcome to Code Graveyard</h1>
+            <p>Join us for a haunted hunt in abandoned lines</p>
+            <button class="cta-button">Get Started</button>
+        </section>
 
-    <section class="featured-posts">
-        <div class="container">
+        <!-- <section id="features">
+            <div class="feature-card">
+                <div class="icon">👻</div>
+                <h3>Ghost Tours</h3>
+                <p>Explore haunted locations with our expert guides.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🎭</div>
+                <h3>Costume Contest</h3>
+                <p>Show off your best Halloween costume and win prizes!</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🍬</div>
+                <h3>Trick or Treat</h3>
+                <p>Find the best candy spots in your neighborhood.</p>
+            </div>
+        </section> -->
+
+        <section id="events">
             <h2>Featured Hauntings</h2>
-            <div class="posts-grid">
-                <article class="post-card">
-                    <img src="assets/images/pumpkin.png" alt="Pumpkin Carving">
-                    <h3><a href="#">The Art of Pumpkin Carving</a></h3>
-                    <p class="post-meta">October 26, 2024 | By Ghostly Quill</p>
-                    <p class="post-excerpt">Unleash your inner artist with these spooky pumpkin carving tips and tricks...</p>
-                    <a href="#" class="read-more">Read More</a>
-                </article>
-                <article class="post-card">
-                    <img src="assets/images/haunted_house.jpg" alt="Haunted House Story">
-                    <h3><a href="#">A Night in the Whispering Manor</a></h3>
-                    <p class="post-meta">October 15, 2024 | By Shadow Walker</p>
-                    <p class="post-excerpt">A chilling tale of a group of friends who dared to enter the infamous Whispering Manor...</p>
-                    <a href="#" class="read-more">Read More</a>
-                </article>
-                <article class="post-card">
-                    <img src="assets/images/witch_brew.jpg" alt="Witch's Brew Recipe">
-                    <h3><a href="#">Bewitching Brew: Spiced Cider Recipe</a></h3>
-                    <p class="post-meta">October 05, 2024 | By Culinary Witch</p>
-                    <p class="post-excerpt">Warm your soul with this delicious and easy-to-make spiced cider recipe...</p>
-                    <a href="#" class="read-more">Read More</a>
-                </article>
+            <div class="haunting-grid">
+                <div class="haunting-card">
+                    <div class="icon">☠️</div>
+                    <h3>Cursed Style Sheets (CSS)</h3>
+                    <p>This CSS died styling divs... now it just haunts the DOM in silence.</p>
+                    <button class="haunt-button">Summon the Code</button>
+                </div>
+                <div class="haunting-card">
+                    <div class="icon">🧟</div>
+                    <h3>Haunted Markup Mansion (HTML)</h3>
+                    <p>This HTML is so dead, even the ghosts won't render it.</p>
+                    <button class="haunt-button">Raise the Dead</button>
+                </div>
+                <div class="haunting-card">
+                    <div class="icon">⚰️</div>
+                    <h3>JavaScript Afterlife</h3>
+                    <p>This JS is deader than a callback in a promise-only project.</p>
+                    <button class="haunt-button">Resurrect the Script</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="spooky-interactions">
-        <div class="container">
-            <h2>Unleash the Spookiness!</h2>
-            <div class="interaction-area">
-                <p>Click the button below for a spooky surprise!</p>
-                <button id="spookyButton">Conjure Something!</button>
-                <div id="spookyResult" class="hidden"></div>
+        <section id="documentation">
+            <div class="documentation-container">
+                <div class="documentation-content">
+                    <h2 id="documentation_header">Documentation Missing</h2>
+                    <div class="human-image">👤</div>
+                    <a href="https://github.com/sangeetagupta2068/dead_code_demo" id="booButton" class="boo-button">Locate Docs Now</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Eerie Echoes | All Rights Reserved</p>
-            <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>Making dead code hunt fun and safe for everyone!</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#events">Featured</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><img src="assets/linkedin.png" alt="LinkedIn" style="width: 24px; height: 24px;"></a>
+                    <a href="#"><img src="assets/instagram.png" alt="Instagram" style="width: 24px; height: 24px;"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Code Graveyard. All rights reserved.</p>
         </div>
     </footer>
-
-    <div id="unusedElement" class="hidden">This is some dead HTML.</div>
-    <p data-unused="true">More dead HTML.</p>
-
-    <script src="js/script.js"></script>
 </body>
-</html>
+</html> 

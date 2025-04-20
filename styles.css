@@ -1,4 +1,3 @@
-/* Dead code - unused color variables */
 :root {
     --unused-color-1: #ff0000;
     --unused-color-2: #00ff00;
@@ -247,13 +246,11 @@ footer {
     }
 }
 
-/* Dead code - unused animation */
 @keyframes unusedAnimation {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-/* Dead code - unused media query */
 @media (max-width: 300px) {
     .unused-class {
         display: none;
@@ -368,11 +365,15 @@ footer {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
 }
 
 .boo-button:hover {
     background-color: var(--primary-color);
     transform: scale(1.05);
+    color: white;
 }
 
 .boo-button::after {
