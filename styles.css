@@ -1,24 +1,23 @@
 /**
- * Dead Code Hunt - Main Stylesheet
- * 
- * This file contains all the styling for the Dead Code Hunt application.
- * It uses CSS variables for theming, flexbox and grid for layout,
- * and includes animations and responsive design.
- * 
- * @author Dead Code Hunt Team
+ * @file styles.css
+ * @description Main stylesheet for the Dead Code Hunt application
+ * @author sangeetagupta2068
  * @version 1.0.0
+ * 
+ * This file contains all the styling for the Dead Code Hunt application,
+ * including layout, colors, animations, and responsive design rules.
  */
 
 /**
  * CSS Variables
- * Global color scheme and theme variables
+ * Global color scheme and design variables
  */
 :root {
-    --primary-color: #ff6b6b;    /* Main accent color */
-    --secondary-color: #8b5cf6;  /* Secondary accent color */
-    --background-color: #1a1a1a; /* Dark background */
-    --text-color: #f0f0f0;       /* Light text color */
-    --card-bg: #2d2d2d;          /* Card background color */
+    --primary-color: #ff6b6b;
+    --secondary-color: #8b5cf6;
+    --background-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --card-bg: #2d2d2d;
 }
 
 /**
@@ -35,11 +34,6 @@ html, body {
     height: 100%;
 }
 
-/**
- * Body Styling
- * Main styling for the document body
- * Uses flexbox for full-height layout
- */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
@@ -51,8 +45,8 @@ body {
 }
 
 /**
- * Header Styling
- * Fixed header with semi-transparent background
+ * Header & Navigation
+ * Styling for the fixed header and navigation menu
  */
 header {
     background-color: rgba(0, 0, 0, 0.8);
@@ -63,10 +57,6 @@ header {
     z-index: 1000;
 }
 
-/**
- * Navigation Bar
- * Flexbox layout for the main navigation
- */
 nav {
     display: flex;
     justify-content: space-between;
@@ -75,44 +65,30 @@ nav {
     margin: 0 auto;
 }
 
-/**
- * Logo Styling
- */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
 }
 
-/**
- * Navigation Menu
- * Horizontal list of navigation links
- */
 nav ul {
     display: flex;
     list-style: none;
     gap: 2rem;
 }
 
-/**
- * Navigation Links
- * Base styling for navigation links with hover transition
- */
 nav a {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-/**
- * Navigation Link Hover State
- */
 nav a:hover {
     color: var(--primary-color);
 }
 
 /**
- * Main Content Area
- * Provides spacing below fixed header and fills available space
+ * Main Content
+ * Styling for the main content area
  */
 main {
     margin-top: 80px;
@@ -121,8 +97,7 @@ main {
 
 /**
  * Hero Section
- * Full-height welcome section with background image and overlay
- * Uses flexbox for centered content
+ * Styling for the hero/banner section
  */
 #hero {
     height: 80vh;
@@ -138,29 +113,17 @@ main {
     background-position: center;
 }
 
-/**
- * Hero Heading
- * Large, attention-grabbing title
- */
 #hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
 }
 
-/**
- * Hero Paragraph
- * Subtitle text below the main heading
- */
 #hero p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
 }
 
-/**
- * Call to Action Button
- * Primary action button with hover animation
- */
 .cta-button {
     background-color: var(--primary-color);
     color: white;
@@ -172,14 +135,14 @@ main {
     transition: transform 0.3s ease;
 }
 
-/**
- * CTA Button Hover State
- * Scales up slightly on hover
- */
 .cta-button:hover {
     transform: scale(1.05);
 }
 
+/**
+ * Features Section
+ * Grid layout for feature cards
+ */
 #features {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -206,6 +169,10 @@ main {
     margin-bottom: 1rem;
 }
 
+/**
+ * Events Section
+ * Styling for the events/featured section
+ */
 #events {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -246,6 +213,10 @@ main {
     background-color: var(--primary-color);
 }
 
+/**
+ * Footer
+ * Styling for the page footer
+ */
 footer {
     background-color: #000;
     padding: 4rem 2rem 2rem;
@@ -293,6 +264,10 @@ footer {
     border-top: 1px solid #333;
 }
 
+/**
+ * Responsive Design
+ * Media queries for responsive layout on smaller screens
+ */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -316,6 +291,10 @@ footer {
 
 
 
+/**
+ * Hauntings Section
+ * Styling for the haunted features section
+ */
 #hauntings {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -383,6 +362,10 @@ footer {
     margin-bottom: 1rem;
 }
 
+/**
+ * Documentation Section
+ * Styling for the documentation section
+ */
 #documentation {
     padding: 4rem 2rem;
     background-color: rgba(0, 0, 0, 0.5);
@@ -477,6 +460,10 @@ footer {
     box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
 }
 
+/**
+ * Animations
+ * Keyframe animations for various elements
+ */
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -523,6 +510,10 @@ footer {
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
 }
 
+/**
+ * Glow Animation
+ * Creates a pulsing glow effect for icons
+ */
 @keyframes glow {
     0% {
         filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
