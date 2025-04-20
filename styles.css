@@ -1,14 +1,30 @@
+/**
+ * Dead Code Hunt - Main Stylesheet
+ * 
+ * This file contains all the styling for the Dead Code Hunt application.
+ * It uses CSS variables for theming, flexbox and grid for layout,
+ * and includes animations and responsive design.
+ * 
+ * @author Dead Code Hunt Team
+ * @version 1.0.0
+ */
+
+/**
+ * CSS Variables
+ * Global color scheme and theme variables
+ */
 :root {
-    --unused-color-1: #ff0000;
-    --unused-color-2: #00ff00;
-    --unused-color-3: #0000ff;
-    --primary-color: #ff6b6b;
-    --secondary-color: #8b5cf6;
-    --background-color: #1a1a1a;
-    --text-color: #f0f0f0;
-    --card-bg: #2d2d2d;
+    --primary-color: #ff6b6b;    /* Main accent color */
+    --secondary-color: #8b5cf6;  /* Secondary accent color */
+    --background-color: #1a1a1a; /* Dark background */
+    --text-color: #f0f0f0;       /* Light text color */
+    --card-bg: #2d2d2d;          /* Card background color */
 }
 
+/**
+ * Base Styles
+ * Reset and base styling for all elements
+ */
 * {
     margin: 0;
     padding: 0;
@@ -19,6 +35,11 @@ html, body {
     height: 100%;
 }
 
+/**
+ * Body Styling
+ * Main styling for the document body
+ * Uses flexbox for full-height layout
+ */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
@@ -29,6 +50,10 @@ body {
     min-height: 100vh;
 }
 
+/**
+ * Header Styling
+ * Fixed header with semi-transparent background
+ */
 header {
     background-color: rgba(0, 0, 0, 0.8);
     padding: 1rem 2rem;
@@ -38,6 +63,10 @@ header {
     z-index: 1000;
 }
 
+/**
+ * Navigation Bar
+ * Flexbox layout for the main navigation
+ */
 nav {
     display: flex;
     justify-content: space-between;
@@ -46,32 +75,55 @@ nav {
     margin: 0 auto;
 }
 
+/**
+ * Logo Styling
+ */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
 }
 
+/**
+ * Navigation Menu
+ * Horizontal list of navigation links
+ */
 nav ul {
     display: flex;
     list-style: none;
     gap: 2rem;
 }
 
+/**
+ * Navigation Links
+ * Base styling for navigation links with hover transition
+ */
 nav a {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
+/**
+ * Navigation Link Hover State
+ */
 nav a:hover {
     color: var(--primary-color);
 }
 
+/**
+ * Main Content Area
+ * Provides spacing below fixed header and fills available space
+ */
 main {
     margin-top: 80px;
     flex: 1;
 }
 
+/**
+ * Hero Section
+ * Full-height welcome section with background image and overlay
+ * Uses flexbox for centered content
+ */
 #hero {
     height: 80vh;
     display: flex;
@@ -86,17 +138,29 @@ main {
     background-position: center;
 }
 
+/**
+ * Hero Heading
+ * Large, attention-grabbing title
+ */
 #hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
 }
 
+/**
+ * Hero Paragraph
+ * Subtitle text below the main heading
+ */
 #hero p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
 }
 
+/**
+ * Call to Action Button
+ * Primary action button with hover animation
+ */
 .cta-button {
     background-color: var(--primary-color);
     color: white;
@@ -108,6 +172,10 @@ main {
     transition: transform 0.3s ease;
 }
 
+/**
+ * CTA Button Hover State
+ * Scales up slightly on hover
+ */
 .cta-button:hover {
     transform: scale(1.05);
 }
@@ -246,16 +314,7 @@ footer {
     }
 }
 
-@keyframes unusedAnimation {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
 
-@media (max-width: 300px) {
-    .unused-class {
-        display: none;
-    }
-}
 
 #hauntings {
     padding: 4rem 2rem;
@@ -390,6 +449,32 @@ footer {
 .boo-button:hover::after {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
+}
+
+.documentation-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.doc-link {
+    background-color: var(--card-bg);
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.doc-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
 }
 
 @keyframes float {

@@ -1,13 +1,24 @@
 <!DOCTYPE html>
+<!--
+    Dead Code Hunt - Main HTML Document
+    
+    This is the main HTML document for the Dead Code Hunt application.
+    It provides the structure and content for the web application.
+    
+    @author Dead Code Hunt Team
+    @version 1.0.0
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dead Code Hunt</title>
+    <!-- External stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
 </head>
 <body>
+    <!-- Main Navigation Header -->
     <header>
         <nav>
             <div class="logo">🎃 Spooky Times</div>
@@ -20,46 +31,34 @@
         </nav>
     </header>
 
+    <!-- Main Content Container -->
     <main>
+        <!-- Hero Section - Main welcome area -->
         <section id="hero">
             <h1>Welcome to Code Graveyard</h1>
             <p>Join us for a haunted hunt in abandoned lines</p>
             <button class="cta-button">Get Started</button>
         </section>
 
-        <!-- <section id="features">
-            <div class="feature-card">
-                <div class="icon">👻</div>
-                <h3>Ghost Tours</h3>
-                <p>Explore haunted locations with our expert guides.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">🎭</div>
-                <h3>Costume Contest</h3>
-                <p>Show off your best Halloween costume and win prizes!</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">🍬</div>
-                <h3>Trick or Treat</h3>
-                <p>Find the best candy spots in your neighborhood.</p>
-            </div>
-        </section> -->
-
+        <!-- Events Section - Featured content cards -->
         <section id="events">
             <h2>Featured Hauntings</h2>
             <div class="haunting-grid">
+                <!-- CSS Dead Code Card -->
                 <div class="haunting-card">
                     <div class="icon">☠️</div>
                     <h3>Cursed Style Sheets (CSS)</h3>
                     <p>This CSS died styling divs... now it just haunts the DOM in silence.</p>
                     <button class="haunt-button">Summon the Code</button>
                 </div>
+                <!-- HTML Dead Code Card -->
                 <div class="haunting-card">
                     <div class="icon">🧟</div>
                     <h3>Haunted Markup Mansion (HTML)</h3>
                     <p>This HTML is so dead, even the ghosts won't render it.</p>
                     <button class="haunt-button">Raise the Dead</button>
                 </div>
+                <!-- JavaScript Dead Code Card -->
                 <div class="haunting-card">
                     <div class="icon">⚰️</div>
                     <h3>JavaScript Afterlife</h3>
@@ -69,23 +68,35 @@
             </div>
         </section>
 
+        <!-- Documentation Section - Links to project docs -->
         <section id="documentation">
             <div class="documentation-container">
                 <div class="documentation-content">
-                    <h2 id="documentation_header">Documentation Missing</h2>
-                    <div class="human-image">👤</div>
-                    <a href="https://github.com/sangeetagupta2068/dead_code_demo" id="booButton" class="boo-button">Locate Docs Now</a>
+                    <h2 id="documentation_header">Project Documentation</h2>
+                    <div class="human-image">📚</div>
+                    <p>Comprehensive documentation is now available for this project.</p>
+                    <div class="documentation-links">
+                        <a href="README.md" class="doc-link">User Guide</a>
+                        <a href="TECHNICAL.md" class="doc-link">Technical Docs</a>
+                        <a href="CONTRIBUTING.md" class="doc-link">Contributing</a>
+                    </div>
+                    <!-- Special "Boo" button with animation effect -->
+                    <a href="https://github.com/sangeetagupta2068/dead_code_demo" id="booButton" class="boo-button">Visit GitHub</a>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer Section -->
     <footer>
         <div class="footer-content">
+            <!-- About Us Section -->
             <div class="footer-section">
                 <h4>About Us</h4>
                 <p>Making dead code hunt fun and safe for everyone!</p>
             </div>
+            
+            <!-- Quick Links Section -->
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
@@ -94,17 +105,24 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
+            
+            <!-- Social Media Links Section -->
             <div class="footer-section">
                 <h4>Connect With Us</h4>
                 <div class="social-links">
-                    <a href="#"><img src="assets/linkedin.png" alt="LinkedIn" style="width: 24px; height: 24px;"></a>
-                    <a href="#"><img src="assets/instagram.png" alt="Instagram" style="width: 24px; height: 24px;"></a>
+                    <a href="#"><img src="assets/linkedin.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="assets/instagram.png" alt="Instagram"></a>
                 </div>
             </div>
         </div>
+        
+        <!-- Copyright Information -->
         <div class="footer-bottom">
             <p>&copy; 2025 Code Graveyard. All rights reserved.</p>
         </div>
     </footer>
+    
+    <!-- JavaScript file for interactive functionality -->
+    <script src="script.js"></script>
 </body>
 </html> 
