@@ -1,45 +1,18 @@
-
-/**
- * @file script.js
- * @description Main JavaScript file for the Dead Code Hunt application
- * @author sangeetagupta2068
- * @version 1.0.0
- * 
- * This file contains all the interactive functionality for the Dead Code Hunt application,
- * including animations, event handlers, and simulated code analysis features.
- */
-
-/**
- * Initialize the application when the DOM is fully loaded
- * Sets up event listeners and interactive elements
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // Get references to DOM elements
     const analyzeButton = document.getElementById('analyzeButton');
     const ghostElement = document.getElementById('ghostElement');
     const resultsContainer = document.getElementById('results');
 
-    /**
-     * Event handler for the analyze button
-     * Shows the ghost element and then displays results after a delay
-     */
-    analyzeButton.addEventListener('click', () => {
-        // Show the ghost element
+    analyzeButton?.addEventListener('click', () => {
         ghostElement.style.opacity = '1';
         
-        // Hide ghost and show results after 2 seconds
         setTimeout(() => {
             ghostElement.style.opacity = '0';
             displayResults();
         }, 2000);
     });
 
-    /**
-     * Display the simulated dead code analysis results
-     * Populates the results container with a list of "found" dead code items
-     */
     function displayResults() {
-        // Sample list of dead code items to display
         const deadCodeItems = [
             "Unused CSS variables",
             "Unused animation keyframes",
@@ -49,60 +22,45 @@ document.addEventListener('DOMContentLoaded', () => {
             "Unused event listener"
         ];
 
-        // Generate HTML for the results and insert into the container
-        resultsContainer.innerHTML = `
-            <h3>Dead Code Analysis Results</h3>
-            <ul>
-                ${deadCodeItems.map(item => `<li>${item}</li>`).join('')}
-            </ul>
-            <p>Total dead code found: ${deadCodeItems.length} items</p>
-        `;
+        if (resultsContainer) {
+            resultsContainer.innerHTML = `
+                <h3>Dead Code Analysis Results</h3>
+                <ul>
+                    ${deadCodeItems.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+                <p>Total dead code found: ${deadCodeItems.length} items</p>
+            `;
+        }
     }
 
-    /**
-     * Feature Cards Animation
-     * Add hover effects to all feature cards
-     */
     const featureCards = document.querySelectorAll('.feature-card');
     featureCards.forEach(card => {
-        // Lift card up on mouse enter
         card.addEventListener('mouseenter', () => {
             card.style.transform = 'translateY(-10px)';
         });
-        // Return card to original position on mouse leave
+
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'translateY(0)';
         });
     });
 
-    /**
-     * Button Click Animation
-     * Add a subtle scale animation to all buttons when clicked
-     */
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            // Scale down button slightly when clicked
             button.style.transform = 'scale(0.95)';
-            // Return to original size after a short delay
+
             setTimeout(() => {
                 button.style.transform = 'scale(1)';
             }, 200);
         });
     });
 
-    /**
-     * Smooth Scrolling Navigation
-     * Enable smooth scrolling when clicking on navigation links
-     */
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            // Get the target section ID from the href attribute
             const targetId = this.getAttribute('href');
-            // Find the target element in the DOM
             const targetElement = document.querySelector(targetId);
-            // Scroll to the target element if it exists
+
             if (targetElement) {
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
@@ -111,21 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
-
-    /**
-     * Boo Button Effect
-     * Creates a floating "Boo!" text animation when the boo button is clicked
-     */
     const booButton = document.getElementById('booButton');
 
     if (booButton) {
         booButton.addEventListener('click', () => {
-            // Create the floating text element
             const booText = document.createElement('div');
             booText.textContent = 'Boo!';
             
-            // Style the floating text
             booText.style.position = 'fixed';
             booText.style.fontSize = '3rem';
             booText.style.color = 'white';
@@ -134,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
             booText.style.pointerEvents = 'none';
             booText.style.animation = 'floatUp 2s ease-out forwards';
             
-            // Position the text above the button
             const buttonRect = booButton.getBoundingClientRect();
             const x = buttonRect.left + (buttonRect.width / 2);
             const y = buttonRect.top;
@@ -142,10 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
             booText.style.left = `${x}px`;
             booText.style.top = `${y}px`;
             
-            // Add the text to the document
             document.body.appendChild(booText);
             
-            // Remove the text after animation completes
             setTimeout(() => {
                 booText.remove();
             }, 2000);
@@ -153,10 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-/**
- * Dynamic Animation Styles
- * Creates and injects CSS animation for the floating text effect
- */
+
 const style = document.createElement('style');
 style.textContent = `
     @keyframes floatUp {
@@ -170,5 +114,262 @@ style.textContent = `
         }
     }
 `;
-document.head.appendChild(style); 
-  
+document.head.appendChild(style);
+
+function initThemeSwitcher() {
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    
+    document.body.classList.add(`theme-${currentTheme}`);
+    
+    if (themeToggle) {
+        themeToggle.checked = currentTheme === 'light';
+        
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                document.body.classList.remove('theme-dark');
+                document.body.classList.add('theme-light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.remove('theme-light');
+                document.body.classList.add('theme-dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
+}
+
+class NotificationManager {
+    constructor() {
+        this.container = document.createElement('div');
+        this.container.id = 'notificationContainer';
+        this.container.style.position = 'fixed';
+        this.container.style.top = '20px';
+        this.container.style.right = '20px';
+        this.container.style.zIndex = '1000';
+        document.body.appendChild(this.container);
+    }
+    
+    show(title, message, type = 'info', duration = 5000) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        
+        notification.innerHTML = `
+            <div class="notification-title">${title}</div>
+            <div class="notification-message">${message}</div>
+            <button class="notification-close">×</button>
+        `;
+        
+        this.container.appendChild(notification);
+        
+        // Force reflow to enable transition
+        notification.offsetHeight;
+        
+        notification.classList.add('show');
+        
+        const closeButton = notification.querySelector('.notification-close');
+        closeButton.addEventListener('click', () => {
+            this.hide(notification);
+        });
+        
+        if (duration > 0) {
+            setTimeout(() => {
+                this.hide(notification);
+            }, duration);
+        }
+        
+        return notification;
+    }
+    
+    hide(notification) {
+        notification.classList.remove('show');
+        
+        notification.addEventListener('transitionend', () => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        });
+    }
+}
+
+class CodeScanner {
+    constructor() {
+        this.scanButton = document.getElementById('scanButton');
+        this.progressBar = document.getElementById('scanProgress')?.querySelector('.progress-fill');
+        this.progressText = document.getElementById('progressText');
+        this.isScanning = false;
+        this.notifications = new NotificationManager();
+        
+        this.initEventListeners();
+    }
+    
+    initEventListeners() {
+        if (this.scanButton) {
+            this.scanButton.addEventListener('click', () => {
+                if (!this.isScanning) {
+                    this.startScan();
+                } else {
+                    this.stopScan();
+                }
+            });
+        }
+        
+        const analyticsButton = document.getElementById('analyticsButton');
+        if (analyticsButton) {
+            analyticsButton.addEventListener('click', () => {
+                this.showAnalytics();
+            });
+        }
+        
+        const cleanupButton = document.getElementById('cleanupButton');
+        if (cleanupButton) {
+            cleanupButton.addEventListener('click', () => {
+                this.performCleanup();
+            });
+        }
+    }
+    
+    startScan() {
+        this.isScanning = true;
+        this.scanButton.textContent = 'Stop Scan';
+        this.scanButton.classList.add('pulse');
+        
+        if (this.progressText) {
+            this.progressText.textContent = 'Scanning...';
+        }
+        
+        this.updateProgress(0);
+        
+        this.scanInterval = setInterval(() => {
+            const currentWidth = parseInt(this.progressBar.style.width) || 0;
+            if (currentWidth < 100) {
+                this.updateProgress(currentWidth + 1);
+            } else {
+                this.completeScan();
+            }
+        }, 100);
+    }
+    
+    stopScan() {
+        this.isScanning = false;
+        clearInterval(this.scanInterval);
+        this.scanButton.textContent = 'Start Scan';
+        this.scanButton.classList.remove('pulse');
+        
+        if (this.progressText) {
+            this.progressText.textContent = 'Scan stopped';
+        }
+        
+        this.notifications.show('Scan Stopped', 'The code scan was stopped before completion.', 'warning');
+    }
+    
+    updateProgress(percentage) {
+        if (this.progressBar) {
+            this.progressBar.style.width = `${percentage}%`;
+        }
+    }
+    
+    completeScan() {
+        this.isScanning = false;
+        clearInterval(this.scanInterval);
+        this.scanButton.textContent = 'Start Scan';
+        this.scanButton.classList.remove('pulse');
+        
+        if (this.progressText) {
+            this.progressText.textContent = 'Scan complete! Found 12 issues.';
+        }
+        
+        this.notifications.show('Scan Complete', 'Your code scan has completed. 12 issues were found.', 'success');
+        
+        const results = {
+            timestamp: new Date().toISOString(),
+            issues: 12,
+            categories: {
+                'Unused Variables': 5,
+                'Unused Functions': 3,
+                'Unreachable Code': 2,
+                'Unused CSS': 2
+            }
+        };
+        
+        localStorage.setItem('lastScanResults', JSON.stringify(results));
+    }
+    
+    showAnalytics() {
+        const lastResults = localStorage.getItem('lastScanResults');
+        
+        if (lastResults) {
+            const data = JSON.parse(lastResults);
+            const message = `
+                Last scan: ${new Date(data.timestamp).toLocaleString()}
+                Total issues: ${data.issues}
+                Categories:
+                - Unused Variables: ${data.categories['Unused Variables']}
+                - Unused Functions: ${data.categories['Unused Functions']}
+                - Unreachable Code: ${data.categories['Unreachable Code']}
+                - Unused CSS: ${data.categories['Unused CSS']}
+            `;
+            
+            this.notifications.show('Analytics Report', message, 'info', 10000);
+        } else {
+            this.notifications.show('No Data', 'No scan has been performed yet. Run a scan first.', 'warning');
+        }
+    }
+    
+    performCleanup() {
+        const lastResults = localStorage.getItem('lastScanResults');
+        
+        if (lastResults) {
+            this.notifications.show('Cleanup Started', 'Cleaning up dead code...', 'info');
+            
+            setTimeout(() => {
+                this.notifications.show('Cleanup Complete', 'Successfully removed 12 instances of dead code!', 'success');
+                localStorage.removeItem('lastScanResults');
+                
+                if (this.progressText) {
+                    this.progressText.textContent = 'Ready to scan';
+                }
+                
+                if (this.progressBar) {
+                    this.progressBar.style.width = '0%';
+                }
+            }, 3000);
+        } else {
+            this.notifications.show('No Data', 'No scan has been performed yet. Run a scan first.', 'warning');
+        }
+    }
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func(...args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0;
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
+const scanner = new CodeScanner();
+initThemeSwitcher();
