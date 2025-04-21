@@ -1,11 +1,23 @@
+/**
+ * Dead Code Demo - Main Stylesheet
+ * 
+ * This stylesheet defines the visual appearance of the Dead Code Demo website.
+ * It uses CSS variables for consistent theming and responsive design for various screen sizes.
+ * 
+ * @author Sangeeta Gupta
+ * @version 1.0.0
+ */
+
+/**
+ * CSS Variables
+ * Defines the color scheme and can be used throughout the stylesheet
+ */
 :root {
-    --unused-color: #088df2;
-    --unused-color: #b7f208;
-    --primary-color: #ff6b6b;
-    --secondary-color: #8b5cf6;
-    --background-color: #1a1a1a;
-    --text-color: #f0f0f0;
-    --card-bg: #2d2d2d;
+    --primary-color: #ff6b6b;    /* Main accent color */
+    --secondary-color: #8b5cf6;  /* Secondary accent color */
+    --background-color: #1a1a1a; /* Page background */
+    --text-color: #f0f0f0;       /* Main text color */
+    --card-bg: #2d2d2d;          /* Card background color */
 }
 
 * {
@@ -151,33 +163,7 @@ main {
     color: var(--primary-color);
 }
 
-.event-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
 
-.event-card {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.event-card button {
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.event-card button:hover {
-    background-color: var(--primary-color);
-}
 
 footer {
     background-color: #000;

@@ -1,38 +1,22 @@
+/**
+ * Dead Code Demo - Main JavaScript
+ * 
+ * This file contains the interactive functionality for the Dead Code Demo website.
+ * It handles UI interactions, animations, and the code scanning simulation.
+ * 
+ * @author Sangeeta Gupta
+ * @version 1.0.0
+ */
+
+/**
+ * Initialize all event listeners and UI interactions when the DOM is fully loaded
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    const analyzeButton = document.getElementById('analyzeButton');
-    const ghostElement = document.getElementById('ghostElement');
-    const resultsContainer = document.getElementById('results');
 
-    analyzeButton?.addEventListener('click', () => {
-        ghostElement.style.opacity = '1';
-        
-        setTimeout(() => {
-            ghostElement.style.opacity = '0';
-            displayResults();
-        }, 2000);
-    });
-
-    function displayResults() {
-        const deadCodeItems = [
-            "Unused CSS variables",
-            "Unused animation keyframes",
-            "Unused media query",
-            "Unused JavaScript function",
-            "Unused JavaScript variables",
-            "Unused event listener"
-        ];
-
-        if (resultsContainer) {
-            resultsContainer.innerHTML = `
-                <h3>Dead Code Analysis Results</h3>
-                <ul>
-                    ${deadCodeItems.map(item => `<li>${item}</li>`).join('')}
-                </ul>
-                <p>Total dead code found: ${deadCodeItems.length} items</p>
-            `;
-        }
-    }
-
+    /**
+     * Add hover effects to feature cards
+     * Creates a floating animation when users hover over feature cards
+     */
     const featureCards = document.querySelectorAll('.feature-card');
     featureCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
@@ -44,6 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /**
+     * Add click animation to all buttons
+     * Creates a subtle "press" effect when buttons are clicked
+     */
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
         button.addEventListener('click', () => {
@@ -55,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /**
+     * Enable smooth scrolling for navigation links
+     * Prevents default anchor behavior and smoothly scrolls to target sections
+     */
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -69,77 +61,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const booButton = document.getElementById('booButton');
-
-    if (booButton) {
-        booButton.addEventListener('click', () => {
-            const booText = document.createElement('div');
-            booText.textContent = 'Boo!';
-            
-            booText.style.position = 'fixed';
-            booText.style.fontSize = '3rem';
-            booText.style.color = 'white';
-            booText.style.textShadow = '0 0 10px var(--primary-color)';
-            booText.style.zIndex = '1000';
-            booText.style.pointerEvents = 'none';
-            booText.style.animation = 'floatUp 2s ease-out forwards';
-            
-            const buttonRect = booButton.getBoundingClientRect();
-            const x = buttonRect.left + (buttonRect.width / 2);
-            const y = buttonRect.top;
-            
-            booText.style.left = `${x}px`;
-            booText.style.top = `${y}px`;
-            
-            document.body.appendChild(booText);
-            
-            setTimeout(() => {
-                booText.remove();
-            }, 2000);
-        });
-    }
 });
 
 
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes floatUp {
-        0% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100px) scale(0);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
 
-function initThemeSwitcher() {
-    const themeToggle = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    
-    document.body.classList.add(`theme-${currentTheme}`);
-    
-    if (themeToggle) {
-        themeToggle.checked = currentTheme === 'light';
-        
-        themeToggle.addEventListener('change', () => {
-            if (themeToggle.checked) {
-                document.body.classList.remove('theme-dark');
-                document.body.classList.add('theme-light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.body.classList.remove('theme-light');
-                document.body.classList.add('theme-dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-    }
-}
 
+
+
+/**
+ * NotificationManager Class
+ * 
+ * Manages the creation, display, and removal of notification messages.
+ * Creates a container for notifications and provides methods to show and hide them.
+ */
 class NotificationManager {
+    /**
+     * Creates a new NotificationManager instance
+     * Initializes the notification container and appends it to the document body
+     */
     constructor() {
         this.container = document.createElement('div');
         this.container.id = 'notificationContainer';
@@ -150,6 +89,15 @@ class NotificationManager {
         document.body.appendChild(this.container);
     }
     
+    /**
+     * Displays a notification with the specified content
+     * 
+     * @param {string} title - The title of the notification
+     * @param {string} message - The main message content
+     * @param {string} type - The notification type (info, success, warning, error)
+     * @param {number} duration - How long the notification should display (in ms)
+     * @returns {HTMLElement} - The created notification element
+     */
     show(title, message, type = 'info', duration = 5000) {
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
@@ -181,6 +129,11 @@ class NotificationManager {
         return notification;
     }
     
+    /**
+     * Hides and removes a notification with animation
+     * 
+     * @param {HTMLElement} notification - The notification element to hide
+     */
     hide(notification) {
         notification.classList.remove('show');
         
@@ -192,7 +145,17 @@ class NotificationManager {
     }
 }
 
+/**
+ * CodeScanner Class
+ * 
+ * Simulates a code scanning tool that detects and cleans up dead code.
+ * Manages the scanning process, progress visualization, and results reporting.
+ */
 class CodeScanner {
+    /**
+     * Creates a new CodeScanner instance
+     * Initializes UI elements and sets up the notification system
+     */
     constructor() {
         this.scanButton = document.getElementById('scanButton');
         this.progressBar = document.getElementById('scanProgress')?.querySelector('.progress-fill');
@@ -203,6 +166,10 @@ class CodeScanner {
         this.initEventListeners();
     }
     
+    /**
+     * Sets up event listeners for scanner control buttons
+     * Connects UI buttons to their respective functionality
+     */
     initEventListeners() {
         if (this.scanButton) {
             this.scanButton.addEventListener('click', () => {
@@ -229,6 +196,10 @@ class CodeScanner {
         }
     }
     
+    /**
+     * Starts the code scanning simulation
+     * Updates UI to show scanning progress and animates the progress bar
+     */
     startScan() {
         this.isScanning = true;
         this.scanButton.textContent = 'Stop Scan';
@@ -250,6 +221,10 @@ class CodeScanner {
         }, 100);
     }
     
+    /**
+     * Stops an in-progress scan
+     * Clears the scanning interval and updates UI accordingly
+     */
     stopScan() {
         this.isScanning = false;
         clearInterval(this.scanInterval);
@@ -263,12 +238,21 @@ class CodeScanner {
         this.notifications.show('Scan Stopped', 'The code scan was stopped before completion.', 'warning');
     }
     
+    /**
+     * Updates the progress bar to show scan completion percentage
+     * 
+     * @param {number} percentage - The percentage of scan completion (0-100)
+     */
     updateProgress(percentage) {
         if (this.progressBar) {
             this.progressBar.style.width = `${percentage}%`;
         }
     }
     
+    /**
+     * Handles scan completion
+     * Updates UI, shows notification, and stores results in localStorage
+     */
     completeScan() {
         this.isScanning = false;
         clearInterval(this.scanInterval);
@@ -281,6 +265,7 @@ class CodeScanner {
         
         this.notifications.show('Scan Complete', 'Your code scan has completed. 12 issues were found.', 'success');
         
+        // Store mock scan results
         const results = {
             timestamp: new Date().toISOString(),
             issues: 12,
@@ -295,6 +280,10 @@ class CodeScanner {
         localStorage.setItem('lastScanResults', JSON.stringify(results));
     }
     
+    /**
+     * Displays analytics from the last scan
+     * Shows a notification with detailed scan results if available
+     */
     showAnalytics() {
         const lastResults = localStorage.getItem('lastScanResults');
         
@@ -316,6 +305,10 @@ class CodeScanner {
         }
     }
     
+    /**
+     * Simulates cleaning up dead code
+     * Shows notifications for the cleanup process and resets the UI
+     */
     performCleanup() {
         const lastResults = localStorage.getItem('lastScanResults');
         
@@ -340,36 +333,8 @@ class CodeScanner {
     }
 }
 
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-function throttle(func, limit) {
-    let inThrottle;
-    return function(...args) {
-        if (!inThrottle) {
-            func(...args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-function generateUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        const r = Math.random() * 16 | 0;
-        const v = c === 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}
-
+/**
+ * Initialize the CodeScanner
+ * Creates a new instance of the CodeScanner class to enable scanning functionality
+ */
 const scanner = new CodeScanner();
-initThemeSwitcher();
